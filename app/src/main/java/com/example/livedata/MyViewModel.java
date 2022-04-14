@@ -5,13 +5,19 @@ import androidx.lifecycle.ViewModel;
 
 public class MyViewModel extends ViewModel {
 
-    private MutableLiveData<String> name = new MutableLiveData<>();
+    private MutableLiveData<MyModelClass> model = new MutableLiveData<>();
 
-    public void setName(String item) {
-        name.setValue(item);
+    public void setModel(MyModelClass item) {
+        model.setValue(item);
     }
 
-    public MutableLiveData<String> getName() {
-        return name;
+    public MutableLiveData<MyModelClass> getModel() {
+        return model;
+    }
+
+    void doTask(String name) {
+        MyModelClass model = new MyModelClass();
+        model.setName(name);
+        setModel(model);
     }
 }

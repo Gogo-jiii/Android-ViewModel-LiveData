@@ -25,15 +25,17 @@ public class MainActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this).get(MyViewModel.class);
 
-        viewModel.getName().observe(this, new Observer<String>() {
-            @Override public void onChanged(String name) {
-                textView.setText(name);
+        viewModel.getModel().observe(this, new Observer<MyModelClass>() {
+            @Override
+            public void onChanged(MyModelClass model) {
+                textView.setText(model.getName());
             }
         });
 
         btnClick.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                viewModel.setName("IT wala...");
+            @Override
+            public void onClick(View v) {
+                viewModel.doTask("IT wala...");
             }
         });
     }
